@@ -1,0 +1,10 @@
+{
+  "name": "Color Change",
+  "id": "1137017289649153305",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "editorType": [
+    "figma"
+  ],
+  "ui": "dist/index.html"
+}
