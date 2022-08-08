@@ -12,7 +12,6 @@ figma.ui.onmessage = prop => {
           if (node.type != "INSTANCE") {
             for (let child of node.children) {
               traverse(child)
-              console.log(child)
               if (child.fills && child.fills[0].type === 'SOLID' && child.fills.length > 0) {
                 const nodeFillHex = figmaRGBToHex(child.fills[0].color).toUpperCase();
                 if (nodeFillHex === prop.colorFind.toUpperCase()) {
@@ -35,6 +34,5 @@ figma.ui.onmessage = prop => {
       traverse(figma.root) // start the traversal at the root
       figma.notify(totalColorChanges.length > 0 ? `${totalColorChanges.length} colors applied` : 'No changes applied');
   }
-
   figma.closePlugin();
 };
