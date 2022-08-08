@@ -1,37 +1,12 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import styles from 'figma-plugin-ds/dist/figma-plugin-ds.css'
-
-// const colorFindArray = ref([{ hex: '#000000' }])
 
 const colorFind = ref('#000000')
 const colorReplace = ref('#000000')
-// const colorFindUpperCase = computed(() => {
-//     return ref(colorFind.value.toUpperCase()).value
-// })
-// const colorReplaceUppercase = computed(() => {
-//     return ref(colorReplace.value.toUpperCase()).value
-// })
-
-const addNewColor = () => {
-    colorFindArray.value.push({ hex: '#000000' })
-}
-
-const reset = () => {
-    colorFindArray.value = [{ hex: '#000000' }]
-}
 
 const create = () => {
-    parent.postMessage(
-        {
-            pluginMessage: {
-                type: 'apply-colors',
-                colorFind: colorFind.value,
-                colorReplace: colorReplace.value
-            }
-        },
-        '*'
-    )
+    parent.postMessage({ pluginMessage: { type: 'apply-colors', colorFind: colorFind.value, colorReplace: colorReplace.value } }, '*')
 }
 
 const cancel = () => {
@@ -40,28 +15,51 @@ const cancel = () => {
 </script>
 
 <template>
-    <label for="colorFind">Find your color</label>
-    <br />
-    <input id="colorFindPicker" type="color" v-model="colorFind" />
-    <input id="colorFindText" type="text" v-model="colorFind" />
-    <br />
-    <label for="colorReplace">Replace by:</label>
-    <br />
-    <input id="colorReplacePicker" type="color" v-model="colorReplace" />
-    <input id="colorReplaceText" type="text" v-model="colorReplace" />
-    <br />
-    <button @click="create">Create</button>
-    <button @click="cancel">Cancel</button>
-    <button @click="reset">reset</button>
+    <div class="section-title">Find your color</div>
+
+    <div class="color-picker-wrapper input">
+        <input id="colorFindPicker" type="color" v-model="colorFind" />
+        <input id="colorFindText" type="text" class="input__field" v-model="colorFind" />
+    </div>
+
+    <div class="section-title">Replace by:</div>
+    <div class="color-picker-wrapper input">
+        <input id="colorReplacePicker" type="color" v-model="colorReplace" />
+        <input id="colorReplaceText" type="text" class="input__field" v-model="colorReplace" />
+    </div>
+
+    <div class="button-group">
+        <button class="button button--secondary" @click="cancel">Cancel</button>
+        <button class="button button--primary" @click="create">Apply</button>
+    </div>
 </template>
 
 <style>
+.color-picker-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+input[type='text'] {
+    max-width: 100px;
+    text-transform: uppercase;
+}
 input[type='color'] {
     background-color: transparent;
-    height: 26px;
-    width: 20px;
+    height: 28px;
+    width: 24px;
     border: none;
-    padding: 0;
-    margin: 0;
+    padding-left: 0;
+    margin-left: 8px;
+    border: none;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    justify-content: flex-end;
 }
 </style>
