@@ -4,7 +4,7 @@ import figmaRGBToHex from './figmaRGBToHex';
 import { toSolidPaint } from 'figx';
 let totalColorChanges: Object[] = [];
 figma.showUI(__html__);
-figma.ui.resize(240, 180);
+figma.ui.resize(240, 220);
 figma.ui.onmessage = prop => {
   if (prop.type === 'apply-colors') {
       function traverse(node: any) {
