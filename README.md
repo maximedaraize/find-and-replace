@@ -9,6 +9,8 @@
 
 # Find and Replace
 
+[Figma plugin link](https://www.figma.com/community/plugin/1137017289649153305/Find-and-Replace)
+
 A Figma plugin that give you the ability to to find all instance of a specific color and replace it by another one in your entire project files.
 ## User Guide
 
