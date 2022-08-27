@@ -1,4 +1,4 @@
-![cover](src/img/cover.jpg)
+![cover](src/img/cover-github-v2.jpg)
 
 **Table of Contents:**
 
