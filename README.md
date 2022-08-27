@@ -52,7 +52,3 @@ pnpm run dev
 ```
 
 and voilà 🎉
-
-
-
-
