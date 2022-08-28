@@ -7,7 +7,7 @@
 * [Contribution](#contribution)
 * [Project setup](#project-setup)
 
-# Find and Replace
+# Find and Replace 
 
 [Figma plugin link](https://www.figma.com/community/plugin/1137017289649153305/Find-and-Replace)
 
