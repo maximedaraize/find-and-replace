@@ -33,7 +33,7 @@ const cancel = () => {
         <button class="button button--primary" @click="create">Apply</button>
     </div>
     <footer>
-        <p id="version" class="type">v1.0.0</p>
+        <p id="version" class="type">v1.1.0</p>
         <a href="https://www.github.com/maximedaraize/find-and-replace" target="_blank" rel="noopener noreferrer" class="button button--tertiary">
             Open a issue on Github</a
         >
