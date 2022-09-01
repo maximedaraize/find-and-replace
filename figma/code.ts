@@ -9,10 +9,9 @@ figma.ui.onmessage = prop => {
   if (prop.type === 'apply-colors') {
       function traverse(node: any) {
         if ("children" in node) {
-          if (node.type != "INSTANCE") {
             for (let child of node.children) {
               traverse(child)
-              if (child.fills && child.fills[0].type === 'SOLID' && child.fills.length > 0) {
+              if (child.fills && child.fills.length > 0 && child.fills[0].type === 'SOLID') {
                 const nodeFillHex = figmaRGBToHex(child.fills[0].color).toUpperCase();
                 if (nodeFillHex === prop.colorFind.toUpperCase()) {
                 // clone the property (fills) of the child
@@ -28,7 +27,7 @@ figma.ui.onmessage = prop => {
                 }
               }
             }
-          }
+          
         }
       }
       traverse(figma.root) // start the traversal at the root
