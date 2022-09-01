@@ -4,6 +4,8 @@ import styles from 'figma-plugin-ds/dist/figma-plugin-ds.css'
 
 const colorFind = ref('#000000')
 const colorReplace = ref('#000000')
+const findInput = ref('')
+const repalceInput = ref('')
 
 const create = () => {
     parent.postMessage({ pluginMessage: { type: 'apply-colors', colorFind: colorFind.value, colorReplace: colorReplace.value } }, '*')
@@ -12,6 +14,12 @@ const create = () => {
 const cancel = () => {
     parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
 }
+const selectFindInput = () => {
+    findInput.value.setSelectionRange(1, -1)
+}
+const selectReplaceInput = () => {
+    repalceInput.value.setSelectionRange(1, -1)
+}
 </script>
 
 <template>
@@ -19,13 +27,13 @@ const cancel = () => {
 
     <div class="color-picker-wrapper input">
         <input id="colorFindPicker" type="color" v-model="colorFind" />
-        <input id="colorFindText" type="text" class="input__field" v-model="colorFind" />
+        <input id="colorFindText" type="text" class="input__field" v-model="colorFind" @focus="selectFindInput" ref="findInput" />
     </div>
 
     <div class="section-title">Replace by:</div>
     <div class="color-picker-wrapper input">
         <input id="colorReplacePicker" type="color" v-model="colorReplace" />
-        <input id="colorReplaceText" type="text" class="input__field" v-model="colorReplace" />
+        <input id="colorReplaceText" type="text" class="input__field" v-model="colorReplace" @focus="selectReplaceInput" ref="repalceInput" />
     </div>
 
     <div class="button-group">
@@ -33,7 +41,7 @@ const cancel = () => {
         <button class="button button--primary" @click="create">Apply</button>
     </div>
     <footer>
-        <p id="version" class="type">v1.0.0</p>
+        <p id="version" class="type">v1.1.0</p>
         <a href="https://www.github.com/maximedaraize/find-and-replace" target="_blank" rel="noopener noreferrer" class="button button--tertiary">
             Open a issue on Github</a
         >
